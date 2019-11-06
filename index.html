@@ -1,0 +1,93 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://aframe.io/releases/0.7.0/aframe.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
+		<script src="https://unpkg.com/aframe-event-set-component@^4.0.0/dist/aframe-event-set-component.min.js"></script>
+		<title>A-Frame</title>
+		<style type="text/css">
+
+
+
+		</style>
+		<script type="text/javascript">
+
+
+
+		</script>
+	</head>
+	<body>
+		<a-scene>
+		    
+		    <a-assets>
+            <img id="stars" src="https://cdn.glitch.com/6c4dc377-23d3-474a-a890-52fde809385d%2Fcropped-starglobe-maya-render.jpg?1515546923255">
+		        <img id="earth" src="https://cdn.glitch.com/6c4dc377-23d3-474a-a890-52fde809385d%2FojwD8.jpg?1515546012811">
+            <img id="moon" src="https://cdn.glitch.com/6c4dc377-23d3-474a-a890-52fde809385d%2Fevol_moon_2048x1024.00252_print.jpg?1515546299331">
+            <a-asset-item id="sat-obj" src="https://cdn.glitch.com/6c4dc377-23d3-474a-a890-52fde809385d%2FSatelite.obj?1515547134673"></a-asset-item>
+          <a-asset-item id="sat-mtl" src="https://cdn.glitch.com/6c4dc377-23d3-474a-a890-52fde809385d%2FSatelite.mtl?1515547132562"></a-asset-item>
+		    </a-assets>
+		    
+			<a-camera wasd-controls="fly: true;" position="0 0 10" rotation="0 0 0">
+			    <a-cursor color="white"></a-cursor>
+			</a-camera>
+      
+      <!-- Earth -->
+      <a-sphere material="src: #earth;" radius="2" position="0 0 0">
+        <a-animation attribute="rotation" from="0 0 0" to="0 360 0" repeat="indefinite" easing="linear" dur="24000"></a-animation>
+        <a-sphere radius="2.25" color="lime" opacity="0">
+          <a-animation attribute="opacity" from="0" to="0.1" begin="mouseenter" dur="1000"></a-animation>
+          <a-animation attribute="opacity" from="0.1" to="0" begin="mouseleave" dur="1000"></a-animation>
+        </a-sphere>
+      </a-sphere>
+      
+      <!-- Moon -->
+      <a-entity>
+        
+        <a-ring rotation="-90 0 0" color="teal" radius-inner="4.99" radius-outer="5.01"></a-ring>
+        
+        <a-sphere material="src: #moon;" radius="0.5" position="5 0 0">
+          <a-animation attribute="rotation" from="0 0 0" to="0 360 0" repeat="indefinite" easing="linear" dur="100000"></a-animation>
+          <a-sphere radius="0.75" color="cyan" opacity="0">
+            <a-animation attribute="opacity" from="0" to="0.1" begin="mouseenter" dur="1000"></a-animation>
+            <a-animation attribute="opacity" from="0.1" to="0" begin="mouseleave" dur="1000"></a-animation>
+          </a-sphere>
+        </a-sphere>
+        
+        <a-animation attribute="rotation" from="0 0 0" to="0 360 0" repeat="indefinite" easing="linear" dur="100000"></a-animation>
+        
+      </a-entity>
+      
+      <!-- Satellite -->
+      <a-entity rotation="0 0 7">
+        <a-entity>
+          
+          <a-ring rotation="-90 0 0" color="tomato" radius-inner="2.99" radius-outer="3.01"></a-ring>
+          
+          <a-entity position="3 0 0" rotation="180 0 0">  
+            <a-entity rotation="30 60 8">
+              <a-entity scale="0.001 0.001 0.001">
+                <a-entity position="-1186.254 -400.724 974.594">
+                    <a-obj-model src="#sat-obj" mtl="#sat-mtl"></a-obj-model>
+                </a-entity>
+              </a-entity>
+            </a-entity>
+          </a-entity>
+          
+          <a-animation attribute="rotation" from="0 0 0" to="0 360 0" repeat="indefinite" easing="linear" dur="24000"></a-animation>
+          
+        </a-entity>
+      </a-entity>
+			
+			<a-sky src="#stars" radius="10000"></a-sky>
+			
+		</a-scene>
+		<script type="text/javascript">
+
+			
+
+		</script>
+	</body>
+</html>
